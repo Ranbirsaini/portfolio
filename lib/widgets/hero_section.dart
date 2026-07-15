@@ -68,6 +68,50 @@ class HeroSection extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  // Beautiful Glowing Circular Profile Photo
+                  FadeInUp(
+                    delay: const Duration(milliseconds: 50),
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 24),
+                      width: isMobile ? 120 : 150,
+                      height: isMobile ? 120 : 150,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: AppColors.primary.withOpacity(0.3),
+                            blurRadius: 20,
+                            spreadRadius: 5,
+                          ),
+                          BoxShadow(
+                            color: AppColors.secondary.withOpacity(0.2),
+                            blurRadius: 30,
+                            spreadRadius: 2,
+                          ),
+                        ],
+                        border: Border.all(
+                          color: AppColors.primary.withOpacity(0.8),
+                          width: 3.0,
+                        ),
+                      ),
+                      child: ClipOval(
+                        child: Image.asset(
+                          'assets/profile.jpg',
+                          fit: BoxFit.cover,
+                          errorBuilder: (context, error, stackTrace) {
+                            return Container(
+                              color: AppColors.surface,
+                              child: const Icon(
+                                Icons.person,
+                                size: 60,
+                                color: AppColors.textSecondary,
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
+                  ),
                   // Little Greeting
                   FadeInUp(
                     delay: const Duration(milliseconds: 100),
